@@ -8,7 +8,7 @@
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
             ];
-            $this->connection = new PDO("mysql:host=localhost;dbname=jeisson;", "Jeisson_2696521", "2696521", $options);
+            $this->connection = new PDO("mysql:host=localhost;dbname=adso_2696521;", "Juanda_2696521", "2696521", $options);
 
             $this->connection->exec("SET CHARACTER SET UTF8");
         }

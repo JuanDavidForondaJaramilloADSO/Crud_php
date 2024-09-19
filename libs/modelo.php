@@ -9,8 +9,7 @@
             $id,
             $table,
             PDO $connection
-        )
-        {
+        ){
             $this->id = $id;
             $this->table = $table;
             $this->db = $connection;
@@ -34,12 +33,20 @@
             $sql ="INSERT INTO users (";
             
             foreach($data as $clave => $valor){
+
+                if ($valor == '') continue;
+
+
+
                 $sql .= "{$clave},";
             };
             $sql = trim($sql, ', ');
             $sql .= ") VALUES (";
 
             foreach($data as $clave => $valor){
+
+                if ($valor == '') continue;
+
                 $sql .= ":{$clave},";
             };
             $sql = trim($sql, ', ');
@@ -47,11 +54,15 @@
 
             $stm = $this->db->prepare($sql);
             foreach($data as $clave => $valor){
+
+                if ($valor == '') continue;
+
+
                 $stm->bindValue(":{$clave}", $valor);
             };
 
             $stm->execute();
-            echo $sql;
+            return $id = $this->db->LastInsertid();
         }
 
         public function update($id, $data){
@@ -70,20 +81,17 @@
                 $stm->bindValue(":{$clave}", $valor);
             };
             $stm->bindValue(":id", $id);
-
-            echo $sql;
             $stm->execute();
 
         }
 
         public function delete($id){
             $sql = "DELETE FROM users WHERE id = :id";
-
             $stm = $this->db->prepare($sql);
             $stm->bindValue(":id", $id);
             $stm->execute();
         }
-
+    
     }
 
 ?>
