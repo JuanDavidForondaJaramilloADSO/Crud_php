@@ -58,9 +58,3 @@ $datebase = new Database();
 
 
 <?php
-
-    for ($i=0; $i < count($lista); $i++) { 
-        echo "<pre>";
-        print_r($lista[$i]);
-        echo "<pre>";
-    }

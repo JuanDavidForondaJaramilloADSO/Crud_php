@@ -23,6 +23,9 @@ $nombre = isset($_POST['first_name']) ?
  $dni = isset($_POST['dni']) ?
  ($_POST['dni'] != "" ? $_POST['dni'] : false) :
  false;
+ $Cuenta = isset($_POST['user_account']) ? $_POST['user_account'] : '';
+ $promedio = isset($_POST['average']) ? $_POST['average'] : '';
+
 if (
 $nombre &&
 $apellido &&
@@ -39,8 +42,8 @@ $dni
         "email" => $correo, 
         "phone" => $telefono,
         "dni"=> $dni,
-        "user_account"=> $_POST["user_account"] ? $_POST["user_account"] : "",
-        "average"=> $_POST["average"] ? $_POST["average"] : ""
+        "user_account"=> $Cuenta,
+        "average"=> $promedio
         ]);
 
         if ($valor != null) {
@@ -51,4 +54,3 @@ $dni
     echo 'Faltan campos obligatorios';
 }
 
-var_dump($nombre);

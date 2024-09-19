@@ -86,7 +86,7 @@
         }
 
         public function delete($id){
-            $sql = "DELETE FROM users WHERE id = :id";
+            $sql = "delete from users where id =:id";
             $stm = $this->db->prepare($sql);
             $stm->bindValue(":id", $id);
             $stm->execute();
